@@ -1615,7 +1615,7 @@ module SPARQL::Grammar
       if data[:_Compare_Numeric]
         add_prod_datum(:Expression, SPARQL::Algebra::Expression.for(data[:_Compare_Numeric].insert(1, *data[:Expression])))
       elsif data[:in]
-        expr = (data[:Expression] + data[:in]).reject {|v| v.eql?(RDF.nil)}
+        expr = (data[:Expression] + data[:in]).reject {|v| v.equal?(RDF.nil)}
         add_prod_datum(:Expression, SPARQL::Algebra::Expression.for(expr.unshift(:in)))
       elsif data[:notin]
         expr = (data[:Expression] + data[:notin]).reject {|v| v.equal?(RDF.nil)}
